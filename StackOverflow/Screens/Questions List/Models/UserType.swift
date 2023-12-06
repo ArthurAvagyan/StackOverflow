@@ -12,6 +12,7 @@ enum UserType: String, Codable {
 	case unregistered, 
 		 registered,
 		 moderator,
-		 teamAdmin,
+		 teamAdmin = "team_admin",
 		 doesNotExist = "does_not_exist"
 }
+											

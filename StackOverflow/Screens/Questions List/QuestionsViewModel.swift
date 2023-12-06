@@ -9,6 +9,7 @@ import Foundation
 import UIKit.UITableView
 
 class QuestionsViewModel {
+	
 	private let dataManager: DataManager
 	private let paginationManager: PaginationManager
 	private var questions: [QuestionModel] {

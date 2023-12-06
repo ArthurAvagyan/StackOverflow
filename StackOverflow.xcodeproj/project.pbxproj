@@ -100,7 +100,7 @@
 				8E8EEB4C2B08FFA100286A1D /* Managers */,
 				8E8EEB4E2B08FFC200286A1D /* Models */,
 				8E8EEB4B2B08FF7A00286A1D /* Views */,
-				8E8EEB4D2B08FFAF00286A1D /* ViewModels */,
+				8EBC50862B20AAD80060AD1A /* Screens */,
 			);
 			path = StackOverflow;
 			sourceTree = "<group>";
@@ -111,12 +111,11 @@
 				8E4240F82AFF84DB000EAB58 /* AnswerModel.swift */,
 				8E8EEB482B08F29100286A1D /* ItemsModel.swift */,
 				8E4240FA2AFF850E000EAB58 /* OwnerModel.swift */,
-				8E4240FC2AFF8578000EAB58 /* UserType.swift */,
 			);
 			path = Answers;
 			sourceTree = "<group>";
 		};
-		8E8B46582B1B2E43004141AD /* Questions */ = {
+		8E8B46582B1B2E43004141AD /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				8E8B46592B1B2E56004141AD /* QuestionModel.swift */,
@@ -124,8 +123,9 @@
 				8E8B465D2B1B2F32004141AD /* ExternalLinkModel.swift */,
 				8E8B465F2B1B2F76004141AD /* ExternalLinkType.swift */,
 				8E8B46612B1B307F004141AD /* ShallowUserModel.swift */,
+				8E4240FC2AFF8578000EAB58 /* UserType.swift */,
 			);
-			path = Questions;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8E8B8BC12B168AE900BE9702 /* Question Cell */ = {
@@ -151,9 +151,6 @@
 		8E8EEB4B2B08FF7A00286A1D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8EB7A23B2B1E060B00C11E4C /* Question View Controller */,
-				8E8B8BC12B168AE900BE9702 /* Question Cell */,
-				8E4240E62AFF8148000EAB58 /* QuestionsViewController.swift */,
 				8EC0AB242B13C9BA00BCEFDC /* BaseViewController.swift */,
 				8EB7A2402B1E06AE00C11E4C /* NavigationController.swift */,
 			);
@@ -169,30 +166,12 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		8E8EEB4D2B08FFAF00286A1D /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				8EC0AB222B13C8E800BCEFDC /* QuestionsViewModel.swift */,
-				8EB7A2422B1E09E300C11E4C /* QuestionViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		8E8EEB4E2B08FFC200286A1D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8E8B46582B1B2E43004141AD /* Questions */,
 				8E8B46572B1B2E2A004141AD /* Answers */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		8EB7A23B2B1E060B00C11E4C /* Question View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8EB7A23C2B1E063400C11E4C /* QuestionViewController.swift */,
-			);
-			path = "Question View Controller";
 			sourceTree = "<group>";
 		};
 		8EBC50832B2098870060AD1A /* Helpers */ = {
@@ -201,6 +180,43 @@
 				8EBC50842B2098970060AD1A /* Observable.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EBC50862B20AAD80060AD1A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				8EBC50872B20AAF30060AD1A /* Questions List */,
+				8EBC50882B20AB970060AD1A /* Question Detail */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		8EBC50872B20AAF30060AD1A /* Questions List */ = {
+			isa = PBXGroup;
+			children = (
+				8E8B46582B1B2E43004141AD /* Models */,
+				8EBC50892B20ABCA0060AD1A /* Views */,
+				8EC0AB222B13C8E800BCEFDC /* QuestionsViewModel.swift */,
+			);
+			path = "Questions List";
+			sourceTree = "<group>";
+		};
+		8EBC50882B20AB970060AD1A /* Question Detail */ = {
+			isa = PBXGroup;
+			children = (
+				8EB7A23C2B1E063400C11E4C /* QuestionViewController.swift */,
+				8EB7A2422B1E09E300C11E4C /* QuestionViewModel.swift */,
+			);
+			path = "Question Detail";
+			sourceTree = "<group>";
+		};
+		8EBC50892B20ABCA0060AD1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E4240E62AFF8148000EAB58 /* QuestionsViewController.swift */,
+				8E8B8BC12B168AE900BE9702 /* Question Cell */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8EC0AB212B13C46300BCEFDC /* Networking */ = {

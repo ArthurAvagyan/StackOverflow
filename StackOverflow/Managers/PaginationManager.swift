@@ -13,14 +13,14 @@ final class PaginationManager {
 	private var isLastPage = false
 	private(set) var isLoading = Observable(false)
 	
-	func reload<T: Decodable>(for function: (_: Int?, _: @escaping (T) -> ()) -> (),
+	func reload<T: Decodable>(for function: (Int, @escaping (T) -> ()) -> (),
 							  _ completion: @escaping (T) -> ()) {
 		guard !isLoading.value else { return }
 		currentPage = 0
 		getNextPage(for: function, completion)
 	}
 	
-	func getNextPage<T: Decodable>(for function: (_: Int?, _: @escaping (T) -> ()) -> (),
+	func getNextPage<T: Decodable>(for function: (Int, @escaping (T) -> ()) -> (),
 					 _ completion: @escaping (T) -> ()) {
 		guard !isLoading.value else { return }
 		isLoading.value = true

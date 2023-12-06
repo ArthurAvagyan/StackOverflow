@@ -16,7 +16,7 @@ enum QuestionsListBuilder {
 	}
 }
 
-class QuestionsListViewController: BaseViewController {
+final class QuestionsListViewController: BaseViewController {
 	
 	private var tableView = UITableView()
 	private let refreshControl = UIRefreshControl()
@@ -28,10 +28,13 @@ class QuestionsListViewController: BaseViewController {
 		super.init(nibName: nil, bundle: nil)
 	}
 	
-	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+}
+
+// MARK: - Lifecycle
+extension QuestionsListViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -39,19 +42,12 @@ class QuestionsListViewController: BaseViewController {
 		configureCallbacks()
 		configureTableView()
 	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-    }
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-	}
 }
 
-extension QuestionsListViewController {
+// MARK: - Callback Configuration
+private extension QuestionsListViewController {
 	
-	private func configureCallbacks() {
+	func configureCallbacks() {
 		viewModel.updateUI = {
 			DispatchQueue.main.async { [weak self] in
 				guard let self = self else { return }
@@ -75,9 +71,10 @@ extension QuestionsListViewController {
 	}
 }
 
-extension QuestionsListViewController {
+// MARK: - UI Configuration
+private extension QuestionsListViewController {
 	
-	private func configureTableView() {
+	func configureTableView() {
 		view.addSubview(tableView)
 		
 		tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -98,6 +95,7 @@ extension QuestionsListViewController {
 	}
 }
 
+// MARK: - UITableViewDelegate
 extension QuestionsListViewController: UITableViewDelegate {
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,6 +109,7 @@ extension QuestionsListViewController: UITableViewDelegate {
 	}
 }
 
+// MARK: - UITableViewDataSource
 extension QuestionsListViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

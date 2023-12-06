@@ -30,9 +30,23 @@ final class QuestionViewController: BaseViewController {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+}
+
+// MARK: - Lifecycle
+extension QuestionViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
+		configureWebView()
+		title = viewModel.model.owner.displayName
+	}
+}
+
+// MARK: - UI Configuration
+private extension QuestionViewController {
+	
+	func configureWebView() {
 		let webView = WKWebView()
 		
 		webView.load(URLRequest(url: viewModel.model.link))
@@ -42,9 +56,5 @@ final class QuestionViewController: BaseViewController {
 		webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 		webView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
 		webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-		
-		
-		title = viewModel.model.owner.displayName
-		
 	}
 }

@@ -9,7 +9,7 @@ import Foundation
 
 final class Networking {
 	
-	static let `default` = Networking(host: "api.stackexchange.com")
+	static let `default` = Networking(host: "api.stackexchange.com/2.3")
 	
 	private let decoder = JSONDecoder()
 	private var components = URLComponents()

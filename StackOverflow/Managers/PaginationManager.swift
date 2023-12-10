@@ -7,7 +7,18 @@
 
 import Foundation
 
-final class PaginationManager {
+protocol PaginationProvider {
+	
+	var isLoading: Observable<Bool> { get }
+	
+	func reload<T: Decodable>(for function: (Int, @escaping (T) -> ()) -> (),
+							  _ completion: @escaping (T) -> ())
+	
+	func getNextPage<T: Decodable>(for function: (Int, @escaping (T) -> ()) -> (),
+					 _ completion: @escaping (T) -> ())
+}
+
+final class PaginationManager: PaginationProvider {
 	
 	private var currentPage = 0
 	private var isLastPage = false

@@ -10,7 +10,6 @@ import UIKit
 class QuestionCell: UITableViewCell {
 	
 	@IBOutlet weak var label: UILabel!
-	
 }
 
 extension QuestionCell {

@@ -7,6 +7,6 @@
 
 import Foundation
 
-class ItemsModel<T: Decodable>: Decodable {
+struct ItemsModel<T: Decodable>: Decodable {
 	let items: [T]
 }

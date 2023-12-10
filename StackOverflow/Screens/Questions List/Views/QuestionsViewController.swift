@@ -48,11 +48,10 @@ extension QuestionsListViewController {
 private extension QuestionsListViewController {
 	
 	func configureCallbacks() {
-		viewModel.updateUI = {
+		viewModel.onQuestionsSet = {
 			DispatchQueue.main.async { [weak self] in
 				guard let self = self else { return }
 				self.tableView.reloadData()
-				self.refreshControl.endRefreshing()
 			}
 		}
 		
@@ -118,7 +117,8 @@ extension QuestionsListViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
-		viewModel.configure(cell: cell, at: indexPath)
+		let title = viewModel.title(for: indexPath)
+		cell.configure(with: title)
 		return cell
 	}
 }

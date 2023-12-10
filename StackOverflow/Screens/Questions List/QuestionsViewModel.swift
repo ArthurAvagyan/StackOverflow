@@ -6,25 +6,28 @@
 //
 
 import Foundation
-import UIKit.UITableView
 
 class QuestionsViewModel {
 	
-	private let dataManager: DataManager
-	private let paginationManager: PaginationManager
+	// MARK: - Managers
+	private let dataManager: QuestionProvider
+	private let paginationManager: PaginationProvider
+	
+	// MARK: - Parameters
 	private var questions: [QuestionModel] {
 		didSet {
-			updateUI()
+			onQuestionsSet()
 		}
 	}
 	
-	var updateUI: (() -> ())!
+	var onQuestionsSet: (() -> ())!
 	var didSelectQuestion: ((QuestionModel) -> ())!
 	private(set) var isLoading = Observable(false)
 	
-	init() {
-		dataManager = DataManager()
-		paginationManager = PaginationManager()
+	init(dataManager: QuestionProvider = DataManager(),
+		 paginationManager: PaginationProvider = PaginationManager()) {
+		self.dataManager = dataManager
+		self.paginationManager = paginationManager
 		questions = []
 		paginationManager.isLoading.listener = { [weak self] isLoading in
 			guard let self = self else { return }
@@ -62,7 +65,7 @@ extension QuestionsViewModel {
 		}
 	}
 	
-	func configure(cell: QuestionCell, at indextPath: IndexPath) {
-		cell.configure(with: questions[indextPath.row].title)
+	func title(for indextPath: IndexPath) -> String {
+		questions[indextPath.row].title
 	}
 }

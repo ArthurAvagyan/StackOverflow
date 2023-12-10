@@ -23,3 +23,7 @@ struct QuestionModel: Decodable {
 	let title: String
 	let viewCount: Int
 }
+
+//extension QuestionModel {
+//	static let mock = QuestionModel(acceptedAnswerId: <#T##Int?#>, answerCount: <#T##Int#>, bountyAmount: <#T##Int?#>, closedReason: <#T##String?#>, collectives: <#T##[CollectiveModel]?#>, isAnswered: <#T##Bool#>, link: <#T##URL#>, owner: <#T##ShallowUserModel#>, postedByCollectives: <#T##[CollectiveModel]?#>, questionId: <#T##Int#>, score: <#T##Int#>, tags: <#T##[String]?#>, title: <#T##String#>, viewCount: <#T##Int#>)
+//}

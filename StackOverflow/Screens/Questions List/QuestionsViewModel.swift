@@ -30,7 +30,7 @@ class QuestionsViewModel {
 		self.paginationManager = paginationManager
 		questions = []
 		paginationManager.isLoading.listener = { [weak self] isLoading in
-			guard let self = self else { return }
+			guard let self else { return }
 			self.isLoading.value = isLoading
 		}
 	}
@@ -44,14 +44,14 @@ extension QuestionsViewModel {
 	
 	@objc func refresh(_ sender: AnyObject) {
 		paginationManager.reload(for: dataManager.getAllQuestions) { [weak self] model in
-			guard let self = self else { return }
+			guard let self else { return }
 			self.questions = model.items
 		}
 	}
 	
 	func scrollsToBottom() {
 		paginationManager.getNextPage(for: dataManager.getAllQuestions) { [weak self] model in
-			guard let self = self else { return }
+			guard let self else { return }
 			self.questions.append(contentsOf: model.items)
 		}
 	}

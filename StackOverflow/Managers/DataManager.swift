@@ -17,47 +17,34 @@ protocol QuestionProvider {
 
 
 final class DataManager: QuestionProvider, AnswerProvider {
-
+	
+	private let networking: Networkable
+	
+	init(networking: Networkable = Networking.default) {
+		self.networking = networking
+	}
+	
 	func getAllAnswers(page: Int, _ completion: @escaping (ItemsModel<AnswerModel>) -> ()) {
-		Networking.default.get(form: .answers,
-							   with: [
-								URLQueryItem(name: "order", value: "desc"),
-								URLQueryItem(name: "sort", value: "activity"),
-								URLQueryItem(name: "site", value: "stackoverflow"),
-								URLQueryItem(name: "page", value: "\(page)")
-							   ],
-							   completion)
-    }
+		networking.get(form: .answers,
+					   with: [
+						URLQueryItem(name: "order", value: "desc"),
+						URLQueryItem(name: "sort", value: "activity"),
+						URLQueryItem(name: "site", value: "stackoverflow"),
+						URLQueryItem(name: "page", value: "\(page)")
+					   ],
+					   completion,
+					   nil)
+	}
 	
 	func getAllQuestions(page: Int, _ completion: @escaping (ItemsModel<QuestionModel>) -> ()) {
-		Networking.default.get(form: .questions,
-							   with: [
-								URLQueryItem(name: "order", value: "desc"),
-								URLQueryItem(name: "sort", value: "activity"),
-								URLQueryItem(name: "site", value: "stackoverflow"),
-								URLQueryItem(name: "page", value: "\(page)")
-							   ],
-							   completion)
+		networking.get(form: .questions,
+					   with: [
+						URLQueryItem(name: "order", value: "desc"),
+						URLQueryItem(name: "sort", value: "activity"),
+						URLQueryItem(name: "site", value: "stackoverflow"),
+						URLQueryItem(name: "page", value: "\(page)")
+					   ],
+					   completion,
+					   nil)
 	}
 }
-
-//final class DataManagerMock: GagoManager {
-//	var getAllQuestionsReturnValue = ItemsModel(items: [QuestionModel(acceptedAnswerId: <#T##Int?#>,
-//																	  answerCount: <#T##Int#>,
-//																	  bountyAmount: <#T##Int?#>,
-//																	  closedReason: <#T##String?#>,
-//																	  collectives: <#T##[CollectiveModel]?#>,
-//																	  isAnswered: <#T##Bool#>,
-//																	  link: <#T##URL#>,
-//																	  owner: <#T##ShallowUserModel#>,
-//																	  postedByCollectives: <#T##[CollectiveModel]?#>,
-//																	  questionId: <#T##Int#>,
-//																	  score: <#T##Int#>,
-//																	  tags: <#T##[String]?#>,
-//																	  title: <#T##String#>,
-//																	  viewCount: <#T##Int#>)])
-//	
-//	func getAllQuestions(page: Int, _ completion: @escaping (ItemsModel<QuestionModel>) -> ()) {
-//		completion(getAllQuestionsReturnValue)
-//	}
-//}

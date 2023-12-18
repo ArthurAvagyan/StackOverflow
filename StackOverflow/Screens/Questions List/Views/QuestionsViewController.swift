@@ -50,22 +50,23 @@ private extension QuestionsListViewController {
 	func configureCallbacks() {
 		viewModel.onQuestionsSet = {
 			DispatchQueue.main.async { [weak self] in
-				guard let self = self else { return }
+				guard let self else { return }
 				self.tableView.reloadData()
 			}
 		}
 		
 		viewModel.didSelectQuestion = { [weak self] model in
-			guard let self = self else { return }
+			guard let self else { return }
 			
 			let vc = QuestionBuilder.build(model: model)
 			self.navigationController?.pushViewController(vc, animated: true)
 		}
 		
 		viewModel.isLoading.listener = { [weak self] isLoading in
-			guard let self = self else { return }
-			
-			isLoading ? self.refreshControl.beginRefreshing() : self.refreshControl.endRefreshing()
+			guard let self else { return }
+			DispatchQueue.main.async {
+				isLoading ? self.refreshControl.beginRefreshing() : self.refreshControl.endRefreshing()
+			}
 		}
 	}
 }

@@ -9,6 +9,6 @@ import Foundation
 
 enum Endpoint: String {
 	
-	case answers = "/answers"
-	case questions = "/questions"
+	case answers = "/2.3/answers"
+	case questions = "/2.3/questions"
 }
